@@ -1,7 +1,6 @@
 spring:
   application:
     name: ms-yanki-accounts
-
   cloud:
     stream:
       function:
@@ -9,8 +8,13 @@ spring:
       bindings:
         yankiCreatedEventPublisher-out-0:
           destination: yankiaccounts
+      kafka:
+        binder:
+          brokers: 20.75.138.96
     config:
       uri: https://ms-config-server.azurewebsites.net
+
+
 
 eureka:
   client:
