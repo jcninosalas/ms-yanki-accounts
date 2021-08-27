@@ -10,7 +10,7 @@ spring:
           destination: yankiaccounts
       kafka:
         binder:
-          brokers: 52.234.233.41
+          brokers: 20.88.178.201
     config:
       uri: https://ms-config-server.azurewebsites.net
 
