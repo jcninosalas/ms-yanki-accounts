@@ -4,17 +4,17 @@ spring:
   cloud:
     stream:
       function:
-        definition: yankiCreatedEventPublisher;
+        definition: yankiCreatedEventPublisher; addDebitCardEventPublisher
       bindings:
         yankiCreatedEventPublisher-out-0:
           destination: yankiaccounts
+        addDebitCardEventPublisher-out-0:
+          destination: yankidebitcard
       kafka:
         binder:
           brokers: 20.88.178.201
     config:
       uri: https://ms-config-server.azurewebsites.net
-
-
 
 eureka:
   client:

@@ -4,7 +4,6 @@ import com.yanki.msyankiaccounts.model.YankiAccount;
 import com.yanki.msyankiaccounts.service.YankiAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.reactive.function.server.ServerRequest;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -22,5 +21,11 @@ public class YankiAccountController {
     @GetMapping("/yanki")
     public Mono<YankiAccount> findByPhoneNumber(@RequestParam String phoneNumber) {
         return service.findByPhoneNumber(phoneNumber);
+    }
+
+    @PostMapping("/debit-card")
+    public void addDebitCard(@RequestParam String cardNumber,
+                             @RequestParam String yankId) {
+        service.addDebitCard(cardNumber, yankId);
     }
 }

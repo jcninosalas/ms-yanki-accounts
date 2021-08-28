@@ -28,4 +28,9 @@ public class YankiServiceConfig {
     public Supplier<Flux<YankiCreatedEvent>> yankiCreatedEventPublisher(Sinks.Many<YankiCreatedEvent> publisher) {
         return publisher::asFlux;
     }
+
+    @Bean
+    public Supplier<Flux<YankiCreatedEvent>> addDebitCardEventPublisher(Sinks.Many<YankiCreatedEvent> publisher) {
+        return publisher::asFlux;
+    }
 }

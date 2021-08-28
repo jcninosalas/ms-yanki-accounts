@@ -9,4 +9,6 @@ public interface YankiAccountService {
     Mono<YankiAccount> create(YankiAccount account);
 
     Mono<YankiAccount> findByPhoneNumber(String phoneNumber);
+
+    void addDebitCard(String cardNumber, String yankiId);
 }

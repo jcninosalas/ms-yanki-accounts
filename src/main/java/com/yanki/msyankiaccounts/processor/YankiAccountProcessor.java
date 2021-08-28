@@ -1,5 +1,7 @@
 package com.yanki.msyankiaccounts.processor;
 
+import com.yanki.msyankiaccounts.model.AddDebitCardEvent;
+import com.yanki.msyankiaccounts.model.YankiAccount;
 import com.yanki.msyankiaccounts.model.YankiCreatedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,4 +22,5 @@ public class YankiAccountProcessor {
         yankiCreatedEvent.setYankiId(accountId);
         sink.emitNext(yankiCreatedEvent, Sinks.EmitFailureHandler.FAIL_FAST);
     }
+
 }
