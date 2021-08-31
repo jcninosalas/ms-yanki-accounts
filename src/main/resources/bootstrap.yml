@@ -14,17 +14,14 @@ spring:
           destination: yankitransactions
     config:
       uri: https://ms-config-server.azurewebsites.net
-#      kafka:
-#        binder:
-#          brokers: 20.88.178.201
-  redis:
-    host: 127.0.0.1
-    port: 6379
-  cache:
-    redis:
-      time-to-live: 600000
-      key-prefix: yanki
-    cache-names: account
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
+#  cache:
+#    redis:
+#      time-to-live: 600000
+#      key-prefix: yanki
+#    cache-names: account
 
 eureka:
   client:
