@@ -1,5 +1,6 @@
 package com.yanki.msyankiaccounts.config;
 
+import com.yanki.msyankiaccounts.model.AddDebitCardEvent;
 import com.yanki.msyankiaccounts.model.YankiCreatedEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +19,8 @@ public class YankiServiceConfig {
 //        this.eventConsumer = eventConsumer;
 //    }
 
-    @Bean Sinks.Many<YankiCreatedEvent> sink() {
+    @Bean
+    Sinks.Many<YankiCreatedEvent> sink() {
         return Sinks.many()
                 .multicast()
                 .directBestEffort();
@@ -29,8 +31,5 @@ public class YankiServiceConfig {
         return publisher::asFlux;
     }
 
-    @Bean
-    public Supplier<Flux<YankiCreatedEvent>> addDebitCardEventPublisher(Sinks.Many<YankiCreatedEvent> publisher) {
-        return publisher::asFlux;
-    }
+
 }

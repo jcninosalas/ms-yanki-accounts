@@ -1,7 +1,6 @@
 package com.yanki.msyankiaccounts.model;
 
 import lombok.Builder;
-
 import java.math.BigDecimal;
 
 @Builder

@@ -6,10 +6,13 @@ import com.yanki.msyankiaccounts.processor.YankiAccountProcessor;
 import com.yanki.msyankiaccounts.repository.YankiAccountRepository;
 import com.yanki.msyankiaccounts.service.YankiAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
+@CacheConfig(cacheNames = {"YankiAccount"})
 public class YankiAccountServiceImpl implements YankiAccountService {
 
     @Autowired
@@ -28,6 +31,7 @@ public class YankiAccountServiceImpl implements YankiAccountService {
     }
 
     @Override
+    @Cacheable(key = "#phoneNumber")
     public Mono<YankiAccount> findByPhoneNumber(String phoneNumber) {
         return repository.findByPhoneNumber(phoneNumber)
                 .switchIfEmpty(Mono.empty());

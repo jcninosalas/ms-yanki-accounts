@@ -4,8 +4,10 @@ import com.yanki.msyankiaccounts.model.AddDebitCardEvent;
 import com.yanki.msyankiaccounts.model.YankiAccount;
 import com.yanki.msyankiaccounts.model.YankiCreatedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Sinks;
 
+@Component
 public class AddDebitCardProcessor {
 
     private final Sinks.Many<AddDebitCardEvent> sink;

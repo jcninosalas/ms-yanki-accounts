@@ -1,11 +1,11 @@
 package com.yanki.msyankiaccounts.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @Builder
 @Document
-public class YankiAccount {
+public class YankiAccount implements Serializable {
 
     private String id;
     private String imei;
@@ -23,4 +23,5 @@ public class YankiAccount {
     private Date createdAt;
     private Date modifiedAt;
     private BigDecimal balance;
+    private String debitAccount;
 }
