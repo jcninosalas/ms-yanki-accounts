@@ -11,8 +11,10 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.function.Function;
 
 @Service
@@ -30,8 +32,10 @@ public class YankiAccountServiceImpl implements YankiAccountService {
 
     @Override
     public Mono<YankiAccount> create(YankiAccount account) {
+        account.setBalance(new BigDecimal(0));
+        account.setCreatedAt(new Date());
         return repository.save(account)
-                .doOnSuccess(c -> yankiAccountProcessor.process(c.getId()));
+                .doOnSuccess(c -> yankiAccountProcessor.process(c));
     }
 
 //    @Override
@@ -53,7 +57,7 @@ public class YankiAccountServiceImpl implements YankiAccountService {
     @Override
     public void addDebitCard(String cardNumber, String yankiId) {
         repository.findById(yankiId)
-                .doOnSuccess(yankiAccount -> addDebitCardProcessor.process(cardNumber, yankiAccount));
+                .doOnSuccess( account -> addDebitCardProcessor.process(cardNumber, account));
 
     }
 

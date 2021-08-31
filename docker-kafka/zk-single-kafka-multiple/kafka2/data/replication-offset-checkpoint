@@ -3,7 +3,7 @@
 __consumer_offsets 8 0
 __consumer_offsets 35 0
 __consumer_offsets 41 0
-__consumer_offsets 23 0
+__consumer_offsets 23 3
 yankidebitcard 0 0
 __consumer_offsets 47 0
 __consumer_offsets 38 0
@@ -14,7 +14,7 @@ __consumer_offsets 2 0
 __consumer_offsets 14 0
 __consumer_offsets 20 0
 __consumer_offsets 44 0
-yankiaccounts 0 0
+yankiaccounts 0 1
 __consumer_offsets 5 0
 __consumer_offsets 26 0
 __consumer_offsets 29 0

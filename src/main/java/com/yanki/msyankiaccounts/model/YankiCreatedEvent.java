@@ -12,6 +12,7 @@ public class YankiCreatedEvent implements Event {
 
     private static final String EVENT = "YankiAccountCreated";
     private String yankiId;
+    private String phoneNumber;
 
     @Override
     public String getEvent() {

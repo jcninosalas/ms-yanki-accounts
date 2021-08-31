@@ -1,5 +1,6 @@
 package com.yanki.msyankiaccounts.processor;
 
+import com.yanki.msyankiaccounts.model.YankiAccount;
 import com.yanki.msyankiaccounts.model.YankiCreatedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,10 @@ public class YankiAccountProcessor {
         this.sink = sink;
     }
 
-    public void process(String accountId) {
+    public void process(YankiAccount account) {
         var yankiCreatedEvent = new YankiCreatedEvent();
-        yankiCreatedEvent.setYankiId(accountId);
+        yankiCreatedEvent.setYankiId(account.getId());
+        yankiCreatedEvent.setPhoneNumber(account.getPhoneNumber());
         log.info("Sending yankiCreatedEvent : {}", yankiCreatedEvent);
         sink.emitNext(yankiCreatedEvent, Sinks.EmitFailureHandler.FAIL_FAST);
     }

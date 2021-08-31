@@ -10,6 +10,8 @@ spring:
           destination: yankiaccounts
         addDebitCardEventPublisher-out-0:
           destination: yankidebitcard
+    config:
+      uri: https://ms-config-server.azurewebsites.net
 #      kafka:
 #        binder:
 #          brokers: 20.88.178.201
@@ -21,10 +23,6 @@ spring:
       time-to-live: 600000
       key-prefix: yanki
     cache-names: account
-
-
-    config:
-      uri: https://ms-config-server.azurewebsites.net
 
 eureka:
   client:
