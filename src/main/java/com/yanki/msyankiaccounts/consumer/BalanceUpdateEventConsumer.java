@@ -20,10 +20,9 @@ public class BalanceUpdateEventConsumer implements EventConsumer<TransactionYank
     public void consumeEvent(TransactionYankiEvent event) {
         log.info("Transaction event recieved: {}", event);
         repository.findByPhoneNumber(event.getPhoneNumber())
-                .flatMap( yanki -> {
-                    var balance = BigDecimal.valueOf(event.getBalance());
-                    yanki.setBalance(balance);
-                    return repository.save(yanki);
+                .doOnSuccess( account -> {
+                    account.setBalance(BigDecimal.valueOf(event.getBalance()));
+                    repository.save(account).subscribe();
                 });
     }
 }
