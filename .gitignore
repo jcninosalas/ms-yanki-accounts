@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+## KAFKA ##
+docker-kafka/zk-single-kafka-multiple/**

@@ -4,12 +4,14 @@ spring:
   cloud:
     stream:
       function:
-        definition: yankiCreatedEventPublisher;addDebitCardEventPublisher;
+        definition: yankiCreatedEventPublisher;addDebitCardEventPublisher;transactionEventProcessor;
       bindings:
         yankiCreatedEventPublisher-out-0:
           destination: yankiaccounts
         addDebitCardEventPublisher-out-0:
           destination: yankidebitcard
+        transactionEventProcessor-in-0:
+          destination: yankitransactions
     config:
       uri: https://ms-config-server.azurewebsites.net
 #      kafka:
