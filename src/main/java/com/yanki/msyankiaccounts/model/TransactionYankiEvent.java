@@ -1,11 +1,13 @@
 package com.yanki.msyankiaccounts.model;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 @Getter
+@ToString
 public class TransactionYankiEvent implements Event{
 
     private static final String EVENT = "TransactionYanki";

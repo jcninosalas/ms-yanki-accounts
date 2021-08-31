@@ -18,11 +18,17 @@ public class BalanceUpdateEventConsumer implements EventConsumer<TransactionYank
 
     @Override
     public void consumeEvent(TransactionYankiEvent event) {
-        log.info("Transaction event recieved: {}", event);
+        log.info("Transaction event recieved: {}", event.toString());
+//        repository.findByPhoneNumber(event.getPhoneNumber())
+//                .doOnSuccess( account -> {
+//                    account.setBalance(BigDecimal.valueOf(event.getBalance()));
+//                    repository.save(account).subscribe();
+//                });
         repository.findByPhoneNumber(event.getPhoneNumber())
-                .doOnSuccess( account -> {
+                .flatMap( account -> {
                     account.setBalance(BigDecimal.valueOf(event.getBalance()));
-                    repository.save(account).subscribe();
-                });
+                    return repository.save(account);
+                }).subscribe();
+
     }
 }
