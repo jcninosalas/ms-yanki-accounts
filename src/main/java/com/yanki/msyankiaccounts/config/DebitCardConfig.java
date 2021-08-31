@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 public class DebitCardConfig {
 
     @Bean
-    Sinks.Many<AddDebitCardEvent> debitCardSink() {
+    Sinks.Many<AddDebitCardEvent> cardSink() {
         return Sinks.many()
                 .multicast()
                 .directBestEffort();

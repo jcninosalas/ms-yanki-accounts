@@ -2,7 +2,6 @@ package com.yanki.msyankiaccounts.processor;
 
 import com.yanki.msyankiaccounts.model.AddDebitCardEvent;
 import com.yanki.msyankiaccounts.model.YankiAccount;
-import com.yanki.msyankiaccounts.model.YankiCreatedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Sinks;
@@ -10,11 +9,11 @@ import reactor.core.publisher.Sinks;
 @Component
 public class AddDebitCardProcessor {
 
-    private final Sinks.Many<AddDebitCardEvent> sink;
+    private final Sinks.Many<AddDebitCardEvent> cardSink;
 
     @Autowired
-    public AddDebitCardProcessor(Sinks.Many<AddDebitCardEvent> sink) {
-        this.sink = sink;
+    public AddDebitCardProcessor(Sinks.Many<AddDebitCardEvent> cardSink) {
+        this.cardSink = cardSink;
     }
 
     public void process(String cardNumber, YankiAccount account) {
@@ -23,6 +22,6 @@ public class AddDebitCardProcessor {
                 .yankiBalance(account.getBalance())
                 .debitCardNumber(cardNumber)
                 .build();
-        sink.emitNext(addDebitCardEvent, Sinks.EmitFailureHandler.FAIL_FAST);
+        cardSink.emitNext(addDebitCardEvent, Sinks.EmitFailureHandler.FAIL_FAST);
     }
 }

@@ -11,6 +11,10 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+import java.util.function.Function;
+
 @Service
 @CacheConfig(cacheNames = {"YankiAccount"})
 public class YankiAccountServiceImpl implements YankiAccountService {
@@ -30,12 +34,21 @@ public class YankiAccountServiceImpl implements YankiAccountService {
                 .doOnSuccess(c -> yankiAccountProcessor.process(c.getId()));
     }
 
+//    @Override
+//    @Cacheable(key = "#phoneNumber")
+//    public Mono<YankiAccount> findByPhoneNumber(String phoneNumber) {
+//        return repository.findByPhoneNumber(phoneNumber)
+//                .switchIfEmpty(Mono.empty());
+//    }
+
     @Override
     @Cacheable(key = "#phoneNumber")
     public Mono<YankiAccount> findByPhoneNumber(String phoneNumber) {
-        return repository.findByPhoneNumber(phoneNumber)
-                .switchIfEmpty(Mono.empty());
+        return repository.findByPhoneNumber(phoneNumber).cache();
+                //.block(Duration.of(1000, ChronoUnit.MILLIS))
     }
+
+
 
     @Override
     public void addDebitCard(String cardNumber, String yankiId) {
