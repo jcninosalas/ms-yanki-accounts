@@ -1,7 +1,7 @@
 package com.yanki.msyankiaccounts.processor;
 
 import com.yanki.msyankiaccounts.model.YankiAccount;
-import com.yanki.msyankiaccounts.model.YankiCreatedEvent;
+import com.yanki.msyankiaccounts.event.YankiCreatedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

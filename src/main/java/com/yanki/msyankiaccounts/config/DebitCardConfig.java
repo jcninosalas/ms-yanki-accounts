@@ -1,6 +1,6 @@
 package com.yanki.msyankiaccounts.config;
 
-import com.yanki.msyankiaccounts.model.AddDebitCardEvent;
+import com.yanki.msyankiaccounts.event.AddDebitCardEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import reactor.core.publisher.Flux;

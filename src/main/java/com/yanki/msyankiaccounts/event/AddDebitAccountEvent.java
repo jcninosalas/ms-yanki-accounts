@@ -1,4 +1,4 @@
-package com.yanki.msyankiaccounts.model;
+package com.yanki.msyankiaccounts.event;
 
 import lombok.Getter;
 

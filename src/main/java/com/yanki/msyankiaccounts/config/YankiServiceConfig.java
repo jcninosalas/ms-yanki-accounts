@@ -1,9 +1,9 @@
 package com.yanki.msyankiaccounts.config;
 
 import com.yanki.msyankiaccounts.consumer.EventConsumer;
-import com.yanki.msyankiaccounts.model.AddDebitCardEvent;
-import com.yanki.msyankiaccounts.model.TransactionYankiEvent;
-import com.yanki.msyankiaccounts.model.YankiCreatedEvent;
+import com.yanki.msyankiaccounts.event.TransactionYankiEvent;
+import com.yanki.msyankiaccounts.event.YankiCreatedEvent;
+import com.yanki.msyankiaccounts.event.YankiPaymentEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,18 +16,15 @@ import java.util.function.Supplier;
 @Configuration
 public class YankiServiceConfig {
 
-//    private final EventConsumer<YankiCreatedEvent> eventConsumer;
-//
-//    @Autowired
-//    public YankiServiceConfig(EventConsumer<YankiCreatedEvent> eventConsumer) {
-//        this.eventConsumer = eventConsumer;
-//    }
-
     private final EventConsumer<TransactionYankiEvent> transactionEventConsumer;
+    private final EventConsumer<YankiPaymentEvent> yankiPaymentEventEventConsumer;
 
     @Autowired
-    public YankiServiceConfig(EventConsumer<TransactionYankiEvent> transactionEventConsumer) {
+    public YankiServiceConfig(
+            EventConsumer<TransactionYankiEvent> transactionEventConsumer,
+            EventConsumer<YankiPaymentEvent> yankiPaymentEventEventConsumer) {
         this.transactionEventConsumer = transactionEventConsumer;
+        this.yankiPaymentEventEventConsumer = yankiPaymentEventEventConsumer;
     }
 
     @Bean
@@ -45,6 +42,10 @@ public class YankiServiceConfig {
     @Bean
     public Consumer<TransactionYankiEvent> transactionEventProcessor() {
         return transactionEventConsumer::consumeEvent;
+    }
+
+    @Bean Consumer<YankiPaymentEvent> yankiPaymentEventConsumer() {
+        return yankiPaymentEventEventConsumer::consumeEvent;
     }
 
 

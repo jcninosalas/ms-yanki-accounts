@@ -4,7 +4,7 @@ spring:
   cloud:
     stream:
       function:
-        definition: yankiCreatedEventPublisher;addDebitCardEventPublisher;transactionEventProcessor;
+        definition: yankiCreatedEventPublisher;addDebitCardEventPublisher;transactionEventProcessor;yankiPaymentEventConsumer
       bindings:
         yankiCreatedEventPublisher-out-0:
           destination: yankiaccounts
@@ -12,6 +12,8 @@ spring:
           destination: yankidebitcard
         transactionEventProcessor-in-0:
           destination: yankitransactions
+        yankiPaymentEventConsumer-in-0:
+          destination: yankipayments
     config:
       uri: https://ms-config-server.azurewebsites.net
 #  redis:

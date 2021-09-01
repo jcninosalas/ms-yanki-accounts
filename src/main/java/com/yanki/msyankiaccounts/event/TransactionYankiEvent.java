@@ -1,5 +1,6 @@
-package com.yanki.msyankiaccounts.model;
+package com.yanki.msyankiaccounts.event;
 
+import com.yanki.msyankiaccounts.model.Transactions;
 import lombok.Getter;
 import lombok.ToString;
 

@@ -1,6 +1,6 @@
 package com.yanki.msyankiaccounts.consumer;
 
-import com.yanki.msyankiaccounts.model.AddDebitAccountEvent;
+import com.yanki.msyankiaccounts.event.AddDebitAccountEvent;
 import com.yanki.msyankiaccounts.repository.YankiAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

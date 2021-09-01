@@ -1,6 +1,5 @@
-package com.yanki.msyankiaccounts.model;
+package com.yanki.msyankiaccounts.event;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 package com.yanki.msyankiaccounts.processor;
 
-import com.yanki.msyankiaccounts.model.AddDebitCardEvent;
+import com.yanki.msyankiaccounts.event.AddDebitCardEvent;
 import com.yanki.msyankiaccounts.model.YankiAccount;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
